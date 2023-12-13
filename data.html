@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MISP Challenge-Task2 Data</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
+					<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
+							Based Speech Processing (MISP) Challenge 2023</a></h1> -->
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Home Scenario Chinese Lipreading Challenge</a></h1> 	
+					<!-- <img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;"> -->
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="overview.html">Overview</a></li>
+								<li class="current"><a href="data.html">Dataset</a></li>
+								<!-- <li>
+									<a href="#">Task</a>
+									<ul>
+										<li><a href="task1_instructions.html">Instructions</a></li>										
+										<li><a href="task1_software.html">Baseline</a></li>
+						                <li><a href="task1_submission.html">Submission</a></li>
+									</ul>
+								</li> -->
+								
+								<li><a href="evaluation.html">Evaluation</a></li>
+								<li><a href="submission.html">Submission</a></li>
+								<!-- <li><a href="results.html">Results</a></li> -->
+								<!-- <li><a href="contact.html">Contact</a></li> -->
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<h1 style="font-size: 150%;">Scenario and Recording Setup</h1>
+						<p>Figure 2 is a schematic diagram, showing the recording scene with six participants. In the near field, Each person has a personal microphone for high-fidelity audio recording. In the mid-field, a matching number of high-fidelity cameras capture individual videos of speakers, and two microphones are used to collect all speakers’ audio with background noise and overlap speech. </p>
+
+						
+						<center>
+							<figure style="padding:0px;border:0px; margin:0px">
+							<img src="images/schematic diagram.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
+							<figcaption>Fig.2. The schematic diagram of record scene</figcaption>
+							</figure>
+						 </center>
+
+						<p>Figure 3 is a real shot of the recording scene. All participants freely select topics and engage in unrestrained discourse in real home settings, resembling the most prevalent multi-speaker conversational scenarios in daily life.</p>
+						
+						<center>
+							<figure style="padding:0px;border:0px; margin:0px">
+							<img src="images/real shot.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
+							<figcaption>Fig.3. A real shot of the recording scene</figcaption>
+							</figure>
+						 </center>
+
+						<p>There still are some variables in the conversation that are taking place in the real living room, for example, the conversation is happening during the day or night. Specifically, by observing the real conversations taking place in the real living room, we found that participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We control the above variables to cover the real scene comprehensively and evenly during the recording.</p>
+						
+						<center>
+							<figure style="padding:0px;border:0px; margin:0px">
+							<img src="images/Recording Devices.png" alt="Schematic Diagram" style="width:60%;padding:0px;border:0"/>
+							<figcaption>Fig.4. Recording devices</figcaption>
+							</figure>
+						 </center>
+
+
+						<p>According to the distance between the device and the speaker, multiple recording devices were divided into 2 categories:</p>
+						<ul>
+							<li>
+								Middle devices: a linear microphone array (2 mic, 44.1 kHz, 16-bit) and n high-definition cameras (720p, 25fps, pi/2), which are placed 0.8-1.5m away from the speaker, where n is the number of participants within this conversation. There is only the corresponding speaker in each camera, the lip ROI is recorded clearly;
+							</li>
+							<li>
+								Near devices: n high-fidelity microphones (44.1 kHz, 16-bit), which were stuck in the middle of the corresponding speaker's chin, respectively. The collected audio signal is rarely interfered by the off-target source and the SNR is estimated to be greater than 15 db. This provides a guarantee for high-quality manual transcription.
+							</li>
+						</ul>
+
+						<p>Various devices have resulted in inconsistent clocks. We address that from two aspects: synchronization devices, and manual post-processing.</p>
+
+						<ul>
+							<li>
+								Synchronization devices: the sound card (ZOOM F8n) is used to synchronize the clock of the middle linear microphone array and the clocks of near high-fidelity microphones while Vicando software, running on the industrial PC (MIC-770), is used to synchronize the clocks of all cameras.
+							</li>
+						</ul>
+
+					</div>
+				</section> 
+
+				<section class="wrapper style2">
+					<div class="container">
+								
+						<h1 style="font-size: 150%;">Task 1: Lipreading Based Wake Word Spotting</h1>
+						
+						<p>We use the middle field audio-visual wake word spotting dataset released in MISP 2021 Task 1, which is collected in home TV scenarios. The wake-up word is “Xiao T Xiao T”. There are 338 speakers. The dataset’s accent is Mandarin and all data were collected in 33 real rooms. A sample will be taken as a positive sample if the wake-up word is included, otherwise it will be regarded as a negative sample. For each sample, at most one wake-up word is included. The statistics of the dataset are shown in Table 1.</p>
+		
+						<style>
+							table {
+							  border-collapse: collapse;
+							  width: 100%;
+							}
+							th, td {
+							  border: 1px solid black;
+							  padding: 8px;
+							  text-align: center;
+							}
+						  </style>
+						  
+						  <table>
+							<caption>Tabel 1: Task 1 Dataset</caption>
+							<tr>
+							  <th rowspan="2">Dataset</th>
+							  <th colspan="2">Train</th>
+							  <th colspan="2">Dev</th>
+							  <th colspan="2">Eval</th>
+							  <th colspan="2">Total</th>
+							</tr>
+							<tr>
+							  <th>Positive</th>
+							  <th>Negative</th>
+							  <th>Positive</th>
+							  <th>Negative</th>
+							  <th>Positive</th>
+							  <th>Negative</th>
+							  <th>Positive</th>
+							  <th>Negative</th>
+							</tr>
+							<tr>
+							  <td>Duration (h)</td>
+							  <td>6.21</td>
+							  <td>93.79</td>
+							  <td>0.78</td>
+							  <td>1.11</td>
+							  <td>0.81</td>
+							  <td>1.80</td>
+							  <td>7.80</td>
+							  <td>96.70</td>
+							</tr>
+							<tr>
+							  <td>Session</td>
+							  <td colspan="2">88</td>
+							  <td colspan="2">10</td>
+							  <td colspan="2">13</td>
+							  <td colspan="2">111</td>
+							</tr>
+							<tr>
+							  <td>Room</td>
+							  <td colspan="2">22</td>
+							  <td colspan="2">5</td>
+							  <td colspan="2">6</td>
+							  <td colspan="2">33</td>
+							</tr>
+							<tr>
+							  <td>Participant</td>
+							  <td colspan="2">257</td>
+							  <td colspan="2">35</td>
+							  <td colspan="2">46</td>
+							  <td colspan="2">338</td>
+							</tr>
+							<tr>
+							  <td>Male</td>
+							  <td colspan="2">79</td>
+							  <td colspan="2">11</td>
+							  <td colspan="2">27</td>
+							  <td colspan="2">117</td>
+							</tr>
+							<tr>
+							  <td>Female</td>
+							  <td colspan="2">178</td>
+							  <td colspan="2">24</td>
+							  <td colspan="2">19</td>
+							  <td colspan="2">221</td>
+							</tr>
+						  </table>
+					<p>On one side, our wake word spotting dataset encompasses over 30 rooms and 300 speakers, showcasing diverse rooms and different speakers, thus enhancing the complexity and diversity of our dataset. On the other side, this dataset includes words that share similar lip shapes with the wake-up words, amplifying the difficulty.</p>
+
+					</div>
+				</section> 
+						
+			<section class="wrapper style1">
+					<div class="container">
+								
+						<h1 style="font-size: 150%;">Task 2: Continuous Target Speaker Lipreading</h1>
+						
+						<p>The challenge uses the train and development set of MISP2021 AVSR dataset which contains 101.12 hours of audio-visual data. The development and evaluation sets originate from remaing data of MISP challenge, contaning 6 males and 6 females, whose videos are also included in the training set. Each speaker possesses approximately 30 minutes of data. Two-thirds of each person's data make up the devlopment set, while the remaining data make up the evaluation set. The statistics of the dataset are shown in Table 2.</p>			
+
+						<style>
+							table {
+							  border-collapse: collapse;
+							  width: 100%;
+							}
+							th, td {
+							  border: 1px solid black;
+							  padding: 8px;
+							  text-align: center;
+							}
+						  </style>
+						  
+						  <table>
+							<caption>Tabel 2: Task 2 Dataset</caption>
+							<tr>
+							  <th>Dataset</th>
+							  <th>Train</th>
+							  <th>Dev</th>
+							  <th>Eval</th>
+							  <th>Total</th>
+							</tr>
+							<tr>
+							  <td>Duration (h)</td>
+							  <td>110.95</td>
+							  <td>4.16</td>
+							  <td>2.27</td>
+							  <td>107.55</td>
+							</tr>
+							<tr>
+							  <td>Session</td>
+							  <td>339</td>
+							  <td>26</td>
+							  <td>16</td>
+							  <td>346</td>
+							</tr>
+							<tr>
+							  <td>Participant</td>
+							  <td>229</td>
+							  <td>12</td>
+							  <td>12</td>
+							  <td>224</td>
+							</tr>
+							<tr>
+							  <td>Male</td>
+							  <td>90</td>
+							  <td>6</td>
+							  <td>6</td>
+							  <td>91</td>
+							</tr>
+							<tr>
+							  <td>Female</td>
+							  <td>139</td>
+							  <td>6</td>
+							  <td>6</td>
+							  <td>133</td>
+							</tr>
+						  </table>
+				<p>To cover the real scene comprehensively and evenly, we designed the following recording configuration by controlling variables as in Table 3. "Time" refers to the recording time, the value is day or night. "Content" refers to the speaking content. We also recorded some data only containing wake-up/similar words to support audio-visual wake word spotting task. "Light" refers to turning on/off the light. "TV" refers to turning on/off the TV. "Group" refers to how many groups of participants are in a conversation. </p>
+				
+				<style>
+					table {
+					  border-collapse: collapse;
+					  width: 100%;
+					}
+					th, td {
+					  border: 1px solid black;
+					  padding: 8px;
+					  text-align: center;
+					}
+				  </style>
+				  
+				  <table>
+					<caption>Configuration</caption>
+					<tr>
+					  <th>Config ID</th>
+					  <th>Time</th>
+					  <th>Content</th>
+					  <th>Light</th>
+					  <th>TV</th>
+					  <th>Group</th>
+					</tr>
+					<tr>
+					  <td>01</td>
+					  <td rowspan="8">Day</td>
+					  <td rowspan="12">Talk freely</td>
+					  <td>off</td>
+					  <td>on</td>
+					  <td>1</td>
+					</tr>
+					<tr>
+					  <td>02</td>
+					  <td>on</td>
+					  <td>on</td>
+					  <td>1</td>
+					</tr>
+					<tr>
+					  <td>03</td>
+					  <td>off</td>
+					  <td>off</td>
+					  <td>2</td>
+					</tr>
+					<tr>
+					  <td>04</td>
+					  <td>on</td>
+					  <td>off</td>
+					  <td>2</td>
+					</tr>
+					<tr>
+					  <td>05</td>
+					  <td>off</td>
+					  <td>on</td>
+					  <td>2</td>
+					</tr>
+					<tr>
+					  <td>06</td>
+					  <td>on</td>
+					  <td>on</td>
+					  <td>2</td>
+					</tr>
+					<tr>
+					  <td>07</td>
+					  <td>on</td>
+					  <td>off</td>
+					  <td>1</td>
+					</tr>
+					<tr>
+					  <td>08</td>
+					  <td>off</td>
+					  <td>off</td>
+					  <td>1</td>
+					</tr>
+					<tr>
+					  <td>09</td>
+					  <td rowspan="4">Night</td>
+					  <td>on</td>
+					  <td>on</td>
+					  <td>1</td>
+					</tr>
+					<tr>
+					  <td>10</td>
+					  <td>on</td>
+					  <td>off</td>
+					  <td>2</td>
+					</tr>
+					<tr>
+					  <td>11</td>
+					  <td>on</td>
+					  <td>on</td>
+					  <td>2</td>
+					</tr>
+					<tr>
+					  <td>12</td>
+					  <td>on</td>
+					  <td>off</td>
+					  <td>1</td>
+					</tr>
+				  </table>
+				
+				  <p>
+					By observing the real conversations that were taking place in the real living room, we found that the participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We found that the average speech overlap ratios of Group = 1 and Group = 2 are 10%~20% and 50%~70%, respectively. The number of groups greater than 3 is very rare when the number of participants is no more than 6. 
+				  </p>
+
+				  
+				</div>
+			</section> 
+			<!-- Gigantic Heading -->
+
+			<!-- Footer -->
+				<div id="footer">
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; All rights reserved</li><li>E-mail: mispchallenge@gmail.com</li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
