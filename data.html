@@ -48,61 +48,8 @@
 
 				</div>
 
-			<!-- Main -->
+
 				<section class="wrapper style1">
-					<div class="container">
-						<h1 style="font-size: 150%;">Scenario and Recording Setup</h1>
-						<p>Figure 2 is a schematic diagram, showing the recording scene with six participants. In the near field, Each person has a personal microphone for high-fidelity audio recording. In the mid-field, a matching number of high-fidelity cameras capture individual videos of speakers, and two microphones are used to collect all speakers’ audio with background noise and overlap speech. </p>
-
-						
-						<center>
-							<figure style="padding:0px;border:0px; margin:0px">
-							<img src="images/schematic diagram.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
-							<figcaption>Fig.2. The schematic diagram of record scene</figcaption>
-							</figure>
-						 </center>
-
-						<p>Figure 3 is a real shot of the recording scene. All participants freely select topics and engage in unrestrained discourse in real home settings, resembling the most prevalent multi-speaker conversational scenarios in daily life.</p>
-						
-						<center>
-							<figure style="padding:0px;border:0px; margin:0px">
-							<img src="images/real shot.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
-							<figcaption>Fig.3. A real shot of the recording scene</figcaption>
-							</figure>
-						 </center>
-
-						<p>There still are some variables in the conversation that are taking place in the real living room, for example, the conversation is happening during the day or night. Specifically, by observing the real conversations taking place in the real living room, we found that participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We control the above variables to cover the real scene comprehensively and evenly during the recording.</p>
-						
-						<center>
-							<figure style="padding:0px;border:0px; margin:0px">
-							<img src="images/Recording Devices.png" alt="Schematic Diagram" style="width:60%;padding:0px;border:0"/>
-							<figcaption>Fig.4. Recording devices</figcaption>
-							</figure>
-						 </center>
-
-
-						<p>According to the distance between the device and the speaker, multiple recording devices were divided into 2 categories:</p>
-						<ul>
-							<li>
-								Middle devices: a linear microphone array (2 mic, 44.1 kHz, 16-bit) and n high-definition cameras (720p, 25fps, pi/2), which are placed 0.8-1.5m away from the speaker, where n is the number of participants within this conversation. There is only the corresponding speaker in each camera, the lip ROI is recorded clearly;
-							</li>
-							<li>
-								Near devices: n high-fidelity microphones (44.1 kHz, 16-bit), which were stuck in the middle of the corresponding speaker's chin, respectively. The collected audio signal is rarely interfered by the off-target source and the SNR is estimated to be greater than 15 db. This provides a guarantee for high-quality manual transcription.
-							</li>
-						</ul>
-
-						<p>Various devices have resulted in inconsistent clocks. We address that from two aspects: synchronization devices, and manual post-processing.</p>
-
-						<ul>
-							<li>
-								Synchronization devices: the sound card (ZOOM F8n) is used to synchronize the clock of the middle linear microphone array and the clocks of near high-fidelity microphones while Vicando software, running on the industrial PC (MIC-770), is used to synchronize the clocks of all cameras.
-							</li>
-						</ul>
-
-					</div>
-				</section> 
-
-				<section class="wrapper style2">
 					<div class="container">
 								
 						<h1 style="font-size: 150%;">Task 1: Lipreading Based Wake Word Spotting</h1>
@@ -192,7 +139,7 @@
 					</div>
 				</section> 
 						
-			<section class="wrapper style1">
+			<section class="wrapper style2">
 					<div class="container">
 								
 						<h1 style="font-size: 150%;">Task 2: Continuous Target Speaker Lipreading</h1>
@@ -362,6 +309,60 @@
 				  </p>
 
 				  
+				</div>
+			</section> 
+
+			<!-- Main -->
+			<section class="wrapper style1">
+				<div class="container">
+					<h1 style="font-size: 150%;">Scenario and Recording Setup</h1>
+					<p>Figure 2 is a schematic diagram, showing the recording scene with six participants. In the near field, Each person has a personal microphone for high-fidelity audio recording. In the mid-field, a matching number of high-fidelity cameras capture individual videos of speakers, and two microphones are used to collect all speakers’ audio with background noise and overlap speech. </p>
+
+					
+					<center>
+						<figure style="padding:0px;border:0px; margin:0px">
+						<img src="images/schematic diagram.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
+						<figcaption>Fig.2. The schematic diagram of record scene</figcaption>
+						</figure>
+					 </center>
+
+					<p>Figure 3 is a real shot of the recording scene. All participants freely select topics and engage in unrestrained discourse in real home settings, resembling the most prevalent multi-speaker conversational scenarios in daily life.</p>
+					
+					<center>
+						<figure style="padding:0px;border:0px; margin:0px">
+						<img src="images/real shot.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
+						<figcaption>Fig.3. A real shot of the recording scene</figcaption>
+						</figure>
+					 </center>
+
+					<p>There still are some variables in the conversation that are taking place in the real living room, for example, the conversation is happening during the day or night. Specifically, by observing the real conversations taking place in the real living room, we found that participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We control the above variables to cover the real scene comprehensively and evenly during the recording.</p>
+					
+					<center>
+						<figure style="padding:0px;border:0px; margin:0px">
+						<img src="images/Recording Devices.png" alt="Schematic Diagram" style="width:60%;padding:0px;border:0"/>
+						<figcaption>Fig.4. Recording devices</figcaption>
+						</figure>
+					 </center>
+
+
+					<p>According to the distance between the device and the speaker, multiple recording devices were divided into 2 categories:</p>
+					<ul>
+						<li>
+							Middle devices: a linear microphone array (2 mic, 44.1 kHz, 16-bit) and n high-definition cameras (720p, 25fps, pi/2), which are placed 0.8-1.5m away from the speaker, where n is the number of participants within this conversation. There is only the corresponding speaker in each camera, the lip ROI is recorded clearly;
+						</li>
+						<li>
+							Near devices: n high-fidelity microphones (44.1 kHz, 16-bit), which were stuck in the middle of the corresponding speaker's chin, respectively. The collected audio signal is rarely interfered by the off-target source and the SNR is estimated to be greater than 15 db. This provides a guarantee for high-quality manual transcription.
+						</li>
+					</ul>
+
+					<p>Various devices have resulted in inconsistent clocks. We address that from two aspects: synchronization devices, and manual post-processing.</p>
+
+					<ul>
+						<li>
+							Synchronization devices: the sound card (ZOOM F8n) is used to synchronize the clock of the middle linear microphone array and the clocks of near high-fidelity microphones while Vicando software, running on the industrial PC (MIC-770), is used to synchronize the clocks of all cameras.
+						</li>
+					</ul>
+
 				</div>
 			</section> 
 			<!-- Gigantic Heading -->
