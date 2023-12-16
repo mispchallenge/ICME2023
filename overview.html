@@ -21,7 +21,7 @@
 					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
 					<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
 							Based Speech Processing (MISP) Challenge 2023</a></h1> -->
-					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Home Scenario Chinese Lipreading Challenge</a></h1> 	
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Chat-scenario Chinese Lipreading (ChatCLR) Challenge</a></h1> 	
 					<!-- <img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;"> -->
 					<!-- Nav -->
 						<nav id="nav">
@@ -66,9 +66,9 @@
 									<header>
 										<h1 style="font-size: 150%;">Background</h1>
                   					</header>
-									  <p>In daily conversations, people acquire information through both auditory cues, such as the speaker's voice, and visual cues, like lip movements, to facilitate the comprehension of spoken content. Visual speech recognition, also known as lipreading, is a technology that infers pronunciation content through lip movements. This emerging and challenging field lies at the intersection of computer vision and natural language processing and plays a key role in various applications in different domains. For example, in public security, lip reading is crucial in detecting facial forgery and determining liveness. In human-computer interaction, lip reading lays a foundation for silent speech control systems, expanding the frontiers of interactive information. In medicine, lip reading significantly benefits people with hearing impairments and those with vocal cord injuries. Moreover, advances in lip reading also drive the development of audio-visual speech recognition and enhancement, providing an effective way to input video as a complement in challenging acoustic environments.</p>
+									  <p>In daily conversations, people acquire information through auditory cues, such as voice, and visual cues, like lip movements, to facilitate the comprehension of spoken content. The audio may be drowned in the noise encountered in poor acoustic scenarios, making the content difficult to acquire. Lipreading infers content through lip movements, lying at the intersection of computer vision and natural language processing. In public security, lipreading is crucial in detecting facial forgery and determining liveness. Moreover, advances in lip reading also drive the development of audio-visual speech recognition and enhancement, providing an effective way to input video as a complement in challenging acoustic environments.</p>
 
-									  <p>Currently, lipreading tasks primarily concentrate on English, emphasizing the crucial need for increased attention in Chinese research. The heightened complexity of Chinese lipreading tasks stems from the extensive number of Chinese characters and the complex mapping between these characters and corresponding lip movements. Additionally, the scarcity of lipreading challenges and the lack of large-scale Chinese lipreading datasets further constrain research efforts in this field. The existing open-source Chinese lipreading datasets are mostly derived from controlled settings like laboratory recordings or online speech programs, such as the Chinese Mandarin Lip Reading (CMLR) dataset consisting of 11 speakers sourced from Chinese News Broadcasts. The Mandarin Audio-Visual dataset with Depth information (MVAD) dataset was recorded in a studio environment, with text derived from social media, news, novels, and poetry. A recent addition is released by the Chinese Continuous Visual Speech Recognition Challenge (CNVSRC), encompassing data from both these origins. Nevertheless, the contents in these videos are carefully prepared by the speakers, leading to a more polished, presentational style rather than everyday communication.</p>
+									  <p>Currently, lipreading tasks primarily concentrate on English, emphasizing the crucial need for increased attention in Chinese. The heightened complexity of Chinese lipreading stems from the extensive number of Chinese characters and their complex relationship with lip movements. Additionally, the lack of large-scale Chinese datasets constrains research efforts. The existing open-source Chinese lipreading datasets are mostly from controlled settings like laboratory recordings. The contents of these videos are carefully prepared, leading to a more presentational style rather than colloquial chatting. Figure 1 illustrates examples of current open-source lipreading datasets and ours (MISP).</p>
 									  
 									  <center>
 										<figure style="padding:0px;border:0px; margin:0px">
@@ -77,11 +77,11 @@
 										</figure>
 									 </center>
 
-									  <p>Different from the existing datasets, our competition utilizes the video portion of the dataset released by the Multimodal Information Based Speech Processing (MISP) Challenge, which was recorded in real home conversational scenarios. The examples of the MISP dataset alongside several other datasets are shown in Fig.1.  The MISP dataset has been validated and employed in numerous multimodal tasks. It features videos recorded in real home settings, with 2-6 speakers engaging in conversations without any predetermined topics. The dataset incorporates various elements like differing lighting conditions. Moreover, to minimize errors due to camera variability, we have meticulously selected recording equipment that maintains consistent parameters and recording distances.</p>
+									  <p>Lipreading can be categorized into two subtypes: word-level and sentence-level. The research on word-level lipreading has been extensively conducted. Sentence-level Chinese lipreading is even more challenging. Due to the inherent ambiguity in lip shapes, different words may exhibit similar lip movements. Variations in articulation habits might lead to different lip movements for the same word. The accuracy of sentence-level recognition is too low
+										for practical use. Therefore, we narrow the focus of general sentence-level lipreading system to speaker-specific taks.</p>
 									
-									  <p>Based on the recognition target, lipreading can be categorized into two subtypes: word-level and sentence-level. The research on word-level lipreading has been extensively conducted. The existing Chinese lipreading challenges, such as Task 1 in The 1st Mandarin Audio-Visual Speech Recognition Challenge, utilize the LRW-1000 dataset that only focuses on the lipreading of isolated words. Sentence-level Chinese lipreading tasks are even more challenging. On one hand, due to the inherent ambiguity in lip shapes, different words may exhibit similar lip movements. On the other hand, variations in speakers' articulation habits might lead to different lip movements for the same word. At present, the accuracy of sentence-level recognition is extremely low, making it impractical for real-world applications. Therefore, we are narrowing the focus of the general sentence-level lipreading system to speaker-specific sentence-level lipreading.</p>
+									  <p>Considering the above perspectives, we organize the ChatCLP challenge in real home chatting environments to address wake word and target speaker lipreading. We are dedicated to fulfilling the requirements of waking up smart home devices within household settings and utilizing video for speech recognition with these smart home devices.</p>
 									  
-									  <p>Considering the above perspectives, we have decided to organize a Chinese lipreading challenge set in real home environments to better reflect real-world scenarios and complexities. Our competition addresses both word-level and sentence-level lipreading. We incorporate the wake word spotting (WWS) task to reflect word-level lipreading. For sentence-level lipreading, we allow participants to fine-tune their models specifically for a few selected speakers. Researchers from both academia and industry are warmly welcome to work on our two tasks (with details as below) for promoting research of speech processing using video information to cross the practical threshold of realistic applications in challenging scenarios. All approaches are encouraged, whether they are emerging or established, and whether they rely on signal processing or machine learning.</p>
 
 
 						</div>
@@ -92,9 +92,10 @@
 					<div class="container">
 						<h1 style="font-size: 150%;">Challenge Features</h1>
 						<ul>
-							<li>Real conversation: talkers speaking in a relaxed and unscripted fashion. </li>
-							<li>Diverse speaking styles: 200 native Chinese participants involved in. </li>
-							<li>Complex backgrounds: 20+ real room backgrounds with various lighting conditions.</li>
+							<li>Real conversation: participants speaking in a relaxed and unscripted fashion. </li>
+							<li>Diverse speaking styles: 200+ native Chinese participants involved in. </li>
+							<li>Complex backgrounds: 20+ real room backgrounds with various lighting conditions. </li>
+							<li>Colloquial chat: Continuous informal sentences with interjections and emotions.</li>
 						</ul>
 					</div>
 				</section> 
@@ -102,12 +103,12 @@
 				<section class="wrapper style2">
 					<div class="container">
 						<h1 style="font-size: 150%;">Tasks</h1>
-						<p>we organize the Chinese lipreading challenge in real home environments to better reflect real-world scenarios and complexities. Our competition concentrates on exploring word-level and sentence-level lipreading, consisting of the following two tasks:</p>
+						<p>We organize the ChatCLR competition to better reflect real-world scenarios and complexities, consisting of the following two tasks:</p>
 						<ul>
-							<li>Task 1: Lipreading Based Wake Word Spotting</li>
-							<li>Task 2: Continuous Target Speaker Lipreading</li>
+							<li>Task 1: Wake Word Lipreading</li>
+							<li>Task 2: Target Speaker Lipreading</li>
 						</ul>
-			            <p>We aim to integrate word-level and sentence-level lip-reading, guiding participants to compare and contrast the differences and connections between the two tasks. Task 1 focuses on word-level lipreading, inspired by the practical application of lipreading technology in recognizing wake-up words. The data for this task is derived from the meticulously recorded Chinese smart home wake-up phrases in the MISP dataset. Task 2, on the other hand, concentrates on continuous lipreading of specific speakers, to recognize the complete conversations of these individuals. We have selected unpublished data from the MISP dataset for this task, including conversations with 6 male and 6 female speakers. A portion of this data will be used as the development set, and another portion as the evaluation set. By comparing the outcomes of these two tasks, we aim to delve deeper into the different challenges faced by word-level and sentence-level lipreading.</p>
+			            <p>The wake word lipreading task focuses on activating smart home devices during conversational interactions. Target speaker lipreading requires participants to fine-tune their networks to recognize the continuous and colloquial spoken conversation. </p>
 					</div>
 				</section> 
 

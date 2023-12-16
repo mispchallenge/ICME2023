@@ -21,7 +21,7 @@
 					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
 					<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
 							Based Speech Processing (MISP) Challenge 2023</a></h1> -->
-					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Home Scenario Chinese Lipreading Challenge</a></h1> 	
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Chat-scenario Chinese Lipreading (ChatCLR) Challenge</a></h1> 	
 					<!-- <img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;"> -->
 
 					<!-- Nav -->
@@ -52,9 +52,9 @@
 				<section class="wrapper style1">
 					<div class="container">
 								
-						<h1 style="font-size: 150%;">Task 1: Lipreading Based Wake Word Spotting</h1>
+						<h1 style="font-size: 150%;">Task 1: Wake Word Lipreading</h1>
 						
-						<p>We use the middle field audio-visual wake word spotting dataset released in MISP 2021 Task 1, which is collected in home TV scenarios. The wake-up word is “Xiao T Xiao T”. There are 338 speakers. The dataset’s accent is Mandarin and all data were collected in 33 real rooms. A sample will be taken as a positive sample if the wake-up word is included, otherwise it will be regarded as a negative sample. For each sample, at most one wake-up word is included. The statistics of the dataset are shown in Table 1.</p>
+						<p>We use the far-field videos released in the MISP 2021 Task 1, collected in home TV scenarios. The wake-up word is “Xiao T Xiao T”. There are 338 speakers. The dataset’s accent is Mandarin; all data were collected in 33 real rooms. A sample will be taken as a positive sample if the wake-up word is included, otherwise, it will be regarded as a negative sample. For each sample, at most one wake-up word is included. The statistics of the dataset are shown in Table 1.</p>
 		
 						<style>
 							table {
@@ -69,7 +69,7 @@
 						  </style>
 						  
 						  <table>
-							<caption>Tabel 1: Task 1 Dataset</caption>
+							<caption>Table 1: Task 1 Dataset</caption>
 							<tr>
 							  <th rowspan="2">Dataset</th>
 							  <th colspan="2">Train</th>
@@ -89,52 +89,53 @@
 							</tr>
 							<tr>
 							  <td>Duration (h)</td>
-							  <td>6.21</td>
-							  <td>93.79</td>
-							  <td>0.78</td>
-							  <td>1.11</td>
-							  <td>0.81</td>
-							  <td>1.80</td>
-							  <td>7.80</td>
-							  <td>96.70</td>
+							  <td>3.87</td>
+							  <td>75.24</td>
+							  <td>0.69</td>
+							  <td>3.3</td>
+							  <td>2.43</td>
+							  <td>11.37</td>
+							  <td>6.9</td>
+							  <td>89.91</td>
 							</tr>
 							<tr>
 							  <td>Session</td>
-							  <td colspan="2">88</td>
-							  <td colspan="2">10</td>
-							  <td colspan="2">13</td>
-							  <td colspan="2">111</td>
+							  <td colspan="2">107</td>
+							  <td colspan="2">8</td>
+							  <td colspan="2">33</td>
+							  <td colspan="2">148</td>
 							</tr>
 							<tr>
 							  <td>Room</td>
-							  <td colspan="2">22</td>
+							  <td colspan="2">25</td>
 							  <td colspan="2">5</td>
-							  <td colspan="2">6</td>
-							  <td colspan="2">33</td>
+							  <td colspan="2">8</td>
+							  <td colspan="2">38</td>
 							</tr>
 							<tr>
 							  <td>Participant</td>
-							  <td colspan="2">257</td>
-							  <td colspan="2">35</td>
-							  <td colspan="2">46</td>
-							  <td colspan="2">338</td>
+							  <td colspan="2">253</td>
+							  <td colspan="2">28</td>
+							  <td colspan="2">47</td>
+							  <td colspan="2">328</td>
 							</tr>
 							<tr>
 							  <td>Male</td>
 							  <td colspan="2">79</td>
-							  <td colspan="2">11</td>
+							  <td colspan="2">9</td>
 							  <td colspan="2">27</td>
-							  <td colspan="2">117</td>
+							  <td colspan="2">115</td>
 							</tr>
 							<tr>
 							  <td>Female</td>
-							  <td colspan="2">178</td>
-							  <td colspan="2">24</td>
+							  <td colspan="2">174</td>
 							  <td colspan="2">19</td>
-							  <td colspan="2">221</td>
+							  <td colspan="2">20</td>
+							  <td colspan="2">213</td>
 							</tr>
 						  </table>
-					<p>On one side, our wake word spotting dataset encompasses over 30 rooms and 300 speakers, showcasing diverse rooms and different speakers, thus enhancing the complexity and diversity of our dataset. On the other side, this dataset includes words that share similar lip shapes with the wake-up words, amplifying the difficulty.</p>
+						  
+					<p>On one side, our wake word spotting dataset encompasses over 30 rooms and 300 speakers, showcasing diverse rooms and different speakers, thus enhancing the complexity and diversity of our dataset. Conversely, this dataset includes words that share similar lip shapes with the wake-up words, amplifying the difficulty.</p>
 
 					</div>
 				</section> 
@@ -142,9 +143,9 @@
 			<section class="wrapper style2">
 					<div class="container">
 								
-						<h1 style="font-size: 150%;">Task 2: Continuous Target Speaker Lipreading</h1>
+						<h1 style="font-size: 150%;">Task 2: Target Speaker Lipreading</h1>
 						
-						<p>The challenge uses the train and development set of MISP2021 AVSR dataset which contains 101.12 hours of audio-visual data. The development and evaluation sets originate from remaing data of MISP challenge, contaning 6 males and 6 females, whose videos are also included in the training set. Each speaker possesses approximately 30 minutes of data. Two-thirds of each person's data make up the devlopment set, while the remaining data make up the evaluation set. The statistics of the dataset are shown in Table 2.</p>			
+						<p>We utilize the far-field videos from the training and development sets of MISP2021 AVSR dataset to construct the training set for Task 2. The development and evaluation sets contain 6 males and 6 females, whose videos are also included in the training set. Each speaker possesses approximately 30 minutes of data. Two-thirds of each person's data make up the development set, while the remaining data make up the evaluation set. The statistics of the dataset are shown in Table 2.</p>			
 
 						<style>
 							table {
@@ -159,7 +160,7 @@
 						  </style>
 						  
 						  <table>
-							<caption>Tabel 2: Task 2 Dataset</caption>
+							<caption>Table 2: Task 2 Dataset</caption>
 							<tr>
 							  <th>Dataset</th>
 							  <th>Train</th>
@@ -171,15 +172,15 @@
 							  <td>Duration (h)</td>
 							  <td>110.95</td>
 							  <td>4.16</td>
-							  <td>2.27</td>
-							  <td>107.55</td>
+							  <td>2.48</td>
+							  <td>117.59</td>
 							</tr>
 							<tr>
 							  <td>Session</td>
 							  <td>339</td>
-							  <td>26</td>
-							  <td>16</td>
-							  <td>346</td>
+							  <td>12</td>
+							  <td>6</td>
+							  <td>357</td>
 							</tr>
 							<tr>
 							  <td>Participant</td>
@@ -203,7 +204,8 @@
 							  <td>133</td>
 							</tr>
 						  </table>
-				<p>To cover the real scene comprehensively and evenly, we designed the following recording configuration by controlling variables as in Table 3. "Time" refers to the recording time, the value is day or night. "Content" refers to the speaking content. We also recorded some data only containing wake-up/similar words to support audio-visual wake word spotting task. "Light" refers to turning on/off the light. "TV" refers to turning on/off the TV. "Group" refers to how many groups of participants are in a conversation. </p>
+						  
+				<p>To cover the real scene comprehensively and evenly, we designed the following recording configuration by controlling variables as in Table 3. ‘Time’ refers to the recording time, the value is day or night. ‘Content’ refers to the speaking content. We also recorded some data only containing wake-up/similar words to support the audio-visual wake-word spotting task. ‘Light’ refers to turning on/off the light. ‘TV’ refers to turning on/off the TV. ‘Group’ refers to how many groups of participants are in a conversation. </p>
 				
 				<style>
 					table {
@@ -305,7 +307,7 @@
 				  </table>
 				
 				  <p>
-					By observing the real conversations that were taking place in the real living room, we found that the participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We found that the average speech overlap ratios of Group = 1 and Group = 2 are 10%~20% and 50%~70%, respectively. The number of groups greater than 3 is very rare when the number of participants is no more than 6. 
+					By observing the real conversations that were taking place in the real living room, we found that the participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We found that the average speech overlap ratios of Group = 1 and Group = 2 are 10% ~ 20% and 50% ~ 70%, respectively. The number of groups greater than 3 is very rare when the number of participants is no more than 6. 
 				  </p>
 
 				  
@@ -316,9 +318,22 @@
 			<section class="wrapper style1">
 				<div class="container">
 					<h1 style="font-size: 150%;">Scenario and Recording Setup</h1>
-					<p>Figure 2 is a schematic diagram, showing the recording scene with six participants. In the near field, Each person has a personal microphone for high-fidelity audio recording. In the mid-field, a matching number of high-fidelity cameras capture individual videos of speakers, and two microphones are used to collect all speakers’ audio with background noise and overlap speech. </p>
-
+					<p>Figure 2 is a schematic diagram, showing the recording scene with six participants. According to the distance between the device and the speaker, multiple recording devices were divided into 2 categories:</p>
+					<ul>
+						<li>Far devices: A wide-angle camera (1080p, 25 fps, 2pi/3), which is placed 3-5m away from the speaker. All participants appear in the camera, which brings speakers position information while reducing the resolution of the lip region of interest (ROI);</li>
+						<li>
+							Middle devices: $n$ high-definition cameras (720p, 25fps, pi/2), placed 0.8-1.5m away from the speaker, where n is the number of participants within this conversation. There is only the corresponding speaker in each camera, and the lip ROI is recorded clearly;
+						</li>
+					</ul>
 					
+					<p>
+						Various devices have resulted in inconsistent clocks. We address that from two aspects: synchronization devices, and manual post-processing.
+					</p>
+					<ul>
+						<li>
+							Synchronization devices: The clocks of near high-fidelity microphones while Vicando software, running on the industrial PC (MIC-770), is used to synchronize the clocks of all cameras.
+						</li>
+					</ul>
 					<center>
 						<figure style="padding:0px;border:0px; margin:0px">
 						<img src="images/schematic diagram.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
@@ -326,18 +341,18 @@
 						</figure>
 					 </center>
 
-					<p>Figure 3 is a real shot of the recording scene. All participants freely select topics and engage in unrestrained discourse in real home settings, resembling the most prevalent multi-speaker conversational scenarios in daily life.</p>
+					<p>In the far field, a wide-angle camera will capture all speakers simultaneously, mirroring the most common scenario in real-life situations. All participants freely select topics and engage in unrestrained discourse in real home settings, resembling the most prevalent multi-speaker conversational scenarios in daily life. There still are some variables in the conversation that are taking place in the real living room, for example, the conversation is happening during the day or night. Specifically, by observing the real conversations in the real living room, we found that participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We control the above variables to cover the real scene comprehensively and evenly during the recording.</p>
 					
-					<center>
+					<!-- <center>
 						<figure style="padding:0px;border:0px; margin:0px">
 						<img src="images/real shot.png" alt="Schematic Diagram" style="width:80%;padding:0px;border:0"/>
 						<figcaption>Fig.3. A real shot of the recording scene</figcaption>
 						</figure>
-					 </center>
+					 </center> -->
 
-					<p>There still are some variables in the conversation that are taking place in the real living room, for example, the conversation is happening during the day or night. Specifically, by observing the real conversations taking place in the real living room, we found that participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We control the above variables to cover the real scene comprehensively and evenly during the recording.</p>
+					<!-- <p>There still are some variables in the conversation that are taking place in the real living room, for example, the conversation is happening during the day or night. Specifically, by observing the real conversations taking place in the real living room, we found that participants would be divided into several groups to discuss different topics. Compared with all participants discussing the same topic, grouping would result in higher overlap ratios. We control the above variables to cover the real scene comprehensively and evenly during the recording.</p> -->
 					
-					<center>
+					<!-- <center>
 						<figure style="padding:0px;border:0px; margin:0px">
 						<img src="images/Recording Devices.png" alt="Schematic Diagram" style="width:60%;padding:0px;border:0"/>
 						<figcaption>Fig.4. Recording devices</figcaption>
@@ -361,7 +376,7 @@
 						<li>
 							Synchronization devices: the sound card (ZOOM F8n) is used to synchronize the clock of the middle linear microphone array and the clocks of near high-fidelity microphones while Vicando software, running on the industrial PC (MIC-770), is used to synchronize the clocks of all cameras.
 						</li>
-					</ul>
+					</ul> -->
 
 				</div>
 			</section> 

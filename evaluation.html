@@ -21,7 +21,7 @@
 					<!-- <img src="images/isca.png" width="6%" height="6%" style="margin:0 77% 0 0;"> -->
 			<!-- <h1 style="font-size: 120%;  margin: -4% 0 -2% 0"><a href="index.html" id="logo">Multimodal Information
 					Based Speech Processing (MISP) Challenge 2022</a></h1> -->
-					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Home Scenario Chinese Lipreading Challenge</a></h1> 	
+					<h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Chat-scenario Chinese Lipreading (ChatCLR) Challenge</a></h1> 	
 			<!-- <h1 style="font-size: 120%;  margin: -1% 0% -1% 0%;"><a href="index.html" id="logo">Multimodal Information
 						Based Speech Processing (MISP) Challenge 2022</a></h1> 	 -->
 			<!-- <img src="images/ieee.svg" width="7%"height="7%" style="margin:-10% 0% 3% 79%;"> -->
@@ -73,15 +73,17 @@
 			<!-- <h1 style="font-size: 150%;">Coming Soon...</h1> -->
 				<section class="wrapper style1">
 					<div class="container">
-						<h1 style="font-size: 150%;">Task 1: Lipreading Based Wake Word Spotting</h1>
-						<p>This is a classification problem. ‘1’ indicates that the current sample contains the wake-up word, and ‘0’ indicates the opposite. We use false reject rate (FRR) and false alarm rate (FAR) on the evaluation set as the criterion of the WWS performance. Suppose the test set consists of N<sub>wake</sub> examples with wake-up word and N<sub>non-wake</sub> examples without wake-up word, FRR and FAR are defined as follows:</p>
+						<h1 style="font-size: 150%;">Task 1: Wake Word Lipreading</h1>
+						<p>This is a classification problem, while '1' indicates that the current sample contains the wake-up word, and '0' indicates the opposite. We use false reject rate (FRR) and false alarm rate (FAR) on the evaluation set as the criterion of the WWS performance. Suppose the test set consists of <em>N<sub>wake</sub></em> examples with wake-up word and <em>N<sub>non-wake</sub></em> examples without wake-up word, <em>FRR</em> and <em>FAR</em> are defined as follows:</p>
+
 						
 						<center>
 							<figure style="padding:0px;border:0px; margin:0px">
 							<img src="images/FRR_FAR.png" alt="Schematic Diagram" style="width:30%;padding:0px;border:0"/>
 							</figure>
 						 </center>
-						 <p>where <span>N<sub>FR</sub></span> denotes the number of examples including wake-up word but the WWS system gives a negative decision. <span>N<sub>FA</sub></span> is the number of examples without wake-up word but the WWS system gives a positive decision. The final score of WWS is defined as:</p>
+						 <p>where <em>N<sub>FR</sub></em> denotes the number of examples including the wake-up word but the WWS system gives a negative decision. <em>N<sub>FA</sub></em> is the number of examples without the wake-up word but the WWS system gives a positive decision. The final score of WWS is defined as:</p>
+
 						
 						 <center>
 							<figure style="padding:0px;border:0px; margin:0px">
@@ -98,7 +100,7 @@
 
  				<section class="wrapper style2">
 					<div class="container">
-						<h1 style="font-size: 150%;">Task 2: Continuous Target Speaker Lipreading</h1>
+						<h1 style="font-size: 150%;">Task 2:  Target Speaker Lipreading</h1>
 						<p>In this Challenge, we adopt the Chinese Character Error Rate (CER) as an official metric for our ranking. CER calculation is based on the concept of Levenshtein distance, where we count the minimum number of character-level operations required to transform the recognition output into the ground truth text. It is represented with this formula:</p>
 
 						<center>
