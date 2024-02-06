@@ -138,35 +138,35 @@ ul.a {list-style-type: circle;}
 
 						<h1 style="font-size: 150%;">Quick start</h1>
 						<li><strong>Setting Local System Jobs</strong></li>
-						<p style="text-indent: 20px;"># Setting local system jobs (local CPU - no external clusters)</p>
-						<p style="text-indent: 20px;">export train_cmd=run.pl</p>
-						<p style="text-indent: 20px;">export decode_cmd=run.pl</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Setting local system jobs (local CPU - no external clusters)</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >export train_cmd=run.pl</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >export decode_cmd=run.pl</p>
 
 						<li><strong>Setting Paths</strong></li>
-						<p style="text-indent: 20px;">--- path.sh ---</p>
-						<p style="text-indent: 20px;"># Defining Kaldi root directory</p>
-						<p style="text-indent: 20px;">export KALDI_ROOT=</p>
-						<p style="text-indent: 20px;"># Setting paths to useful tools</p>
-						<p style="text-indent: 20px;">export PATH=</p>
-						<p style="text-indent: 20px;"># Enable SRILM</p>
-						<p style="text-indent: 20px;">. $KALDI_ROOT/tools/env.sh</p>
-						<p style="text-indent: 20px;"># Variable needed for proper data sorting</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >--- path.sh ---</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Defining Kaldi root directory</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >export KALDI_ROOT=</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Setting paths to useful tools</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >export PATH=</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Enable SRILM</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >. $KALDI_ROOT/tools/env.sh</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Variable needed for proper data sorting</p>
 						<p style="text-indent: 20px;">export LC_ALL=C</p>
 						<br>
-						<p style="text-indent: 20px;">--- run_misp.sh ---</p>
-						<p style="text-indent: 20px;"># Defining corpus directory</p>
-						<p style="text-indent: 20px;">misp2021_corpus=</p>
-						<p style="text-indent: 20px;"># Defining path to python interpreter</p>
-						<p style="text-indent: 20px;">python_path =</p>
-						<p style="text-indent: 20px;"># the directory to host coordinate information used to crop ROI</p>
-						<p style="text-indent: 20px;">data_roi =</p>
-						<p style="text-indent: 20px;"># dictionary directory</p>
-						<p style="text-indent: 20px;">dict_dir=</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >--- run_misp.sh ---</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Defining corpus directory</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >misp2021_corpus=</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># Defining path to python interpreter</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >python_path =</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># the directory to host coordinate information used to crop ROI</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >data_roi =</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># dictionary directory</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >dict_dir=</p>
 
 						<li><strong>Run Training</strong></li>
-						<p style="text-indent: 20px;">./run_misp.sh</p>
-						<p style="text-indent: 20px;"># options:</p>
-						<p style="text-indent: 100px;">--stage  -1  change the number to start from different training stages</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" >./run_misp.sh</p>
+						<p style="text-indent: 20px;" class="reduce-spacing" ># options:</p>
+						<p style="text-indent: 100px;" class="reduce-spacing" >--stage  -1  change the number to start from different training stages</p>
 
 						<h1 style="font-size: 150%;">Requirments</h1>
 						<ul>
