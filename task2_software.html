@@ -36,21 +36,14 @@ ul.a {list-style-type: circle;}
 							<ul>
 								<li><a href="index.html">Home</a></li>
 								<li><a href="overview.html">Overview</a></li>
-								<li><a href="data.html">Data</a></li>
-								<li>
-									<a href="#">Track1</a>
-									<ul>
-										<li><a href="task1_instructions.html">Instructions</a></li>										
-										<li><a href="task1_software.html">Software</a></li>
-						                <li><a href="task1_leaderboard.html">Leaderboard</a></li>
-									</ul>
-								</li>
+								<li><a href="data.html">Dataset</a></li>
+								<li><a href="evaluation.html">Evaluation</a></li>
+
 								<li class="current">
-									<a href="#">Track2</a>
+									<a href="#">Baseline</a>
 									<ul>
-										<li><a href="task2_instructions.html">Instructions</a></li>										
-										<li><a href="task2_software.html">Software</a></li>
-						                <li><a href="task2_leaderboard.html">Leaderboard</a></li>
+										<li><a href="task1_software.html">Task1</a></li>
+										<li><a href="task2_software.html">Task2</a></li>
 									</ul>
 								</li>
 								<!-- <li>
@@ -62,10 +55,8 @@ ul.a {list-style-type: circle;}
 										<li><a href="task3_submission.html">Submission</a></li>
 									</ul>
 								</li> -->
-								<li><a href="download.html">Registration</a></li>
-								<li><a href="extral_data.html">Extra Data</a></li>
-								<!-- <li><a href="results.html">Results</a></li> -->
-								<!-- <li><a href="contact.html">Contact</a></li> -->
+								<li><a href="registration.html">Registration</a></li>
+								<li><a href="submission.html">Submission</a></li>
 							</ul>
 						</nav>
 
@@ -74,146 +65,121 @@ ul.a {list-style-type: circle;}
 			<!-- Main -->
 			<section class="wrapper style1">
 					<div class="container">
-						<h1 style="font-size: 150%;">Track2 AVDR Baseline</h1>
-						<p>For details, please refer to <a href="https://github.com/mispchallenge/misp2022_baseline/tree/main/track2_AVDR"> Github link </a></p>					   
+						<h1 style="font-size: 150%;">Target Speaker Lipreading Baseline</h1>
+						<p>For the code and guide of the baseline system, please refer to <a href="https://github.com/mispchallenge/MISP2021-AVWWS">Github link.</a></p>					   
 
-						<h1 style="font-size: 150%;">AVSD Module Training</h1>
-						<p>The training of AVSD module is consistent with the track1.</p>
+						<h1 style="font-size: 150%;">General Model Training</h1>
+						<li><strong>Lexicon and data directory</strong></li>
+						<p style="text-indent: 20px;">For training, development, and test sets, we prepare data directories and the lexicon in the format expected by <a href="http://kaldi-asr.org/doc/data_prep.html">kaldi</a> respectively. Note that we choose <a href="https://github.com/aishell-foundation/DaCiDian.git">DaCiDian</a> raw resource and convert it to kaldi lexicon format.</p>
 
-						<h1 style="font-size: 150%;">AVSR Module Training</h1>
-						<p>The training of AVSR module uses the oracle diarization results.</p>
-						<ol type="a">
-							<li><strong>Data preparation</strong></li>
-							<ul>
-								<li><strong>speech enhancement</strong></li>
-								<p>Weighted Prediction Error(WPE) dereverberation and BeamformIt are used to reduce the reverberations of speech signals. The algorithms are implemented with open-source toolkit, <a href="https://github.com/fgnt/nara_wpe">nara_wpe</a> and <a href="https://github.com/xanguera/BeamformIt">BeamformIt</a>.</p>
-							</ul>
-							
-							<ul>
-								<li><strong>prepare data and language directory for kaldi</strong></li>
-								<p>For training, development, and test sets, we prepare data directories and the lexicon in the format expected by  <a href="http://kaldi-asr.org/doc/data_prep.html">kaldi</a> respectively. Note that we choose <a href="https://github.com/aishell-foundation/DaCiDian.git">DaCiDian</a> raw resource and convert it to kaldi lexicon format.</p>
-							</ul>
+						<li><strong>Language model</strong></li>
+						<p style="text-indent: 20px;">We segment MISP speech transcription for language model training by applying <a href="https://github.com/aishell-foundation/DaCiDian.git">DaCiDian</a> as dict and <a href="https://github.com/fxsjy/jieba">Jieba</a> open-source toolkit. For the language model, we choose a maximum entropy-based 3-gram model, which achieves the best perplexity, from n-gram(n=2,3,4) models trained on MISP speech transcripts with different smoothing algorithms and parameters sets. And the selected 3-gram model has 516600 unigrams, 432247 bigrams, and 915962 trigrams respectively. Note that the temporary and final language models are stored in /data/srilm.</p>
+						
+						<li><strong>GMM-HMM model</strong></li>
+						<p style="text-indent: 20px;">The GMM-HMM state model is used to obtain frame-level state label for DNN-based lipreading model training. For features extraction, we extract 13-dimensional MFCC features plus 3-dimensional pitches by using near speech. As a start point for triphone models, a monophone model is trained. Then a triphone model is trained using delta features on the whole dataset. In the third triphone model training process, an MLLT-based global transform is estimated iteratively on the top of LDA feature to extract independent speaker features. For the fourth triphone model, feature space maximum likelihood linear regression (fMLLR) with speaker adaptive training (SAT) is applied in the training.</p>
+						
 
-							<li>
-								<p><strong>Language model</strong></p>
-								<p>We segment MISP speech transcription for language model training by applying <a href="https://github.com/aishell-foundation/DaCiDian.git">DaCiDian</a> as dict and <a href="https://github.com/fxsjy/jieba">Jieba</a> open-source toolkit. For the language model, we choose a maximum entropy-based 3-gram model, which achieves the best perplexity, from n-gram(n=2,3,4) models trained on MISP speech transcripts with different smoothing algorithms and parameters sets. And the selected 3-gram model has 516600 unigrams, 432247 bigrams, and 915962 trigrams respectively.  Note that the temporary and final language models are stored in /data/srilm.</p>
-							</li>
-
-							<li>
-								<p><strong>Acoustic model</strong></p>
-								<p>The acoustic model of the AVSR system is built largely following the Kaldi recipes which mainly contain two stages: GMM-HMM state model and DNN-HMM model.</p>
-								
-								<ul>
-									<li><strong>GMM-HMM</strong></li>
-									<p>For features extraction, we extract 13-dimensional MFCC features plus 3-dimensional pitches. As a start point for triphone models, a monophone model is trained on a subset of 50k utterances. Then a small triphone model and a larger triphone model are consecutively trained using delta features on a subset of 100k utterances and the whole dataset respectively. In the third triphone model training process, an MLLT-based global transform is estimated iteratively on the top of LDA feature to extract independent speaker features. For the fourth triphone model, feature space maximum likelihood linear regression (fMLLR) with speaker adaptive training (SAT) is applied in the training.</p>
-								</ul>
-								
-								<ul>
-									<li><strong>DNN-HMM</strong></li>
-									<p>Based on the tied-triphone state alignments from GMM, DNN is configured and trained to replace GMM. The input features are 40-dimensional FBank features with cepstral normalization and the 96 × 96 (W × H) lip ROI.</p>
-								</ul>
-
-							</li>
-						</ol>
-
-
-						<h1 style="font-size: 150%;">Inference</h1>
-						<p>The RTTM file as the output of the AVSD module contains the information of the Session, SPK, T<sup>start</sup>, and T<sup>dur</sup>.</p>
-						<p>where:</p>
-						<ul>
-					        <li>Session<sub>k</sub>: k-th session</li>
-							<li>SPK<sub>i</sub>: i-th speaker</li>
-							<li>T<sub>j</sub><sup>start</sup>: the start time of the j-th utterance for SPK<sub>i</sub></li>
-							<li>T<sub>j</sub><sup>dur</sup>: the duration of the j-th utterance for SPK<sub>i</sub></li>
-						</ul>
-						<p>During the inference, the RTTM file is used for segmenting audio and video data in AVSR module.</p>
-						<p>If speaker IDs of the final decoding results are global, you only need to caculate the CER. If you run your own model and get the local speaker IDs, you need to caculate the cpCER.</p>
-
-						<h1 style="font-size: 150%;">Results</h1>
-						<center>
-							<figure style="padding:0px;border:0px; margin:10px">
-							<img src="images/AVDR_baseline_result.png" style="width:300px;padding:0px;border:0" />
-							</figure>
-						</center>	
-						<p>The AVSD+AVSR model is our AVDR baseline system.</p>
+						<h1 style="font-size: 150%;">Target Speaker Model Training</h1>
+						<p style="text-indent: 20px;">Building upon a pretrained General Model, we employ a subset of the target speaker's data to perform finetuning, deriving a Target Speaker Model. The finetuning process adheres to the training steps outlined for the DNN-HMM framework. When the evaluation set is unavailable, the development dataset is partitioned in a 7:3 ratio. The larger portion is allocated for finetuning purposes, whereas the smaller segment is reserved for testing. This division is explicitly documented in <a href="https://github.com/coalboss/ChatCLR2024-TargetSpeakerLipreading/tree/main/data">DaCiDian.</a></p>
+						
+						<h1 style="font-size: 150%;">Baseline Results</h1>
+						<li><strong>Development set</strong></li>
+						<style>
+							table {
+							  border-collapse: collapse;
+							  width: 100%;
+							  border: 1px solid #ddd;
+							}
+						  
+							th, td {
+							  border: 1px solid #ddd;
+							  padding: 8px;
+							  text-align: center;
+							}
+						  
+							th {
+							  background-color: #f2f2f2;
+							}
+						  </style>
+						  
+						  <table>
+							<tr>
+							  <th>SpeakerID</th>
+							  <th>S026</th>
+							  <th>S138</th>
+							  <th>S139</th>
+							  <th>S140</th>
+							  <th>S286</th>
+							  <th>S287</th>
+							  <th>S288</th>
+							  <th>S289</th>
+							  <th>S393</th>
+							  <th>S394</th>
+							  <th>S426</th>
+							  <th>S427</th>
+							</tr>
+							<tr>
+							  <td>General Model</td>
+							  <td>97.85</td>
+							  <td>95.96</td>
+							  <td>97.08</td>
+							  <td>96.90</td>
+							  <td>98.08</td>
+							  <td>95.31</td>
+							  <td>96.95</td>
+							  <td>96.64</td>
+							  <td>95.87</td>
+							  <td>97.07</td>
+							  <td>97.01</td>
+							  <td>96.27</td>
+							</tr>
+						  </table>
+						<p>We adopt the Chinese Character Error Rate (CER) as the evaluation index (in %). The baseline results of the evaluation set will be published together with the data according to the schedule.</p>
 
 						<h1 style="font-size: 150%;">Quick start</h1>
-						<ul><li><strong>Setting Local System Jobs</strong></li></ul>
-						<p><code># Setting local system jobs (local CPU - no external clusters)</br>
-						export train_cmd=run.pl</br>
-						export decode_cmd=run.pl</code></p>
-						<p></p>
+						<li><strong>Local System Jobs</strong></li>
+						<p style="text-indent: 20px;"># Setting local system jobs (local CPU - no external clusters)</p>
+						<p style="text-indent: 20px;">export train_cmd=run.pl</p>
+						<p style="text-indent: 20px;">export decode_cmd=run.pl</p>
+
+						<h1 style="font-size: 150%;">Setting Paths</h1>
+						<p style="text-indent: 20px;"><strong>--- path.sh ---</strong></p>
+						<p style="text-indent: 20px;"># Defining Kaldi root directory</p>
+						<p style="text-indent: 20px;">export KALDI_ROOT=</p>
+						<p style="text-indent: 20px;"># Setting paths to useful tools</p>
+						<p style="text-indent: 20px;">export PATH=</p>
+						<p style="text-indent: 20px;"># Enable SRILM</p>
+						<p style="text-indent: 20px;">. $KALDI_ROOT/tools/env.sh</p>
+						<p style="text-indent: 20px;"># Variable needed for proper data sorting</p>
+						<p style="text-indent: 20px;">export LC_ALL=C</p>
+
+						<p style="text-indent: 20px;"><strong>--- run_misp.sh ---</strong></p>
+						<p style="text-indent: 20px;"># Defining corpus directory</p>
+						<p style="text-indent: 20px;">misp2021_corpus=</p>
+						<p style="text-indent: 20px;"># Defining path to python interpreter</p>
+						<p style="text-indent: 20px;">python_path =</p>
+						<p style="text-indent: 20px;"># the directory to host coordinate information used to crop ROI</p>
+						<p style="text-indent: 20px;">data_roi =</p>
+						<p style="text-indent: 20px;"># dictionary directory</p>
+						<p style="text-indent: 20px;">dict_dir=</p>
+
+						<li><strong>Run Training</strong></li>
+						<p style="text-indent: 20px;">./run_misp.sh</p>
+						<p style="text-indent: 20px;"># options:</p>
+						<p style="text-indent: 100px;">--stage  -1  change the number to start from different training stages</p>
+
+						<h1 style="font-size: 150%;">Requirments</h1>
 						<ul>
-						<li><strong>Setting  Paths</strong></li>
+							<li><strong>Kaldi</strong></li>
+							<li><strong>python packages</strong></li>
+							<p style="text-indent: 20px;">numpy</p>
+							<p style="text-indent: 20px;">cv2</p>
+							<p style="text-indent: 20px;">pytorch</p>
+							<p style="text-indent: 20px;">jieba</p>
+							<li><strong>other tools</strong></li>
+							<p style="text-indent: 20px;">SRILM</p>
 						</ul>
-						<p><code>--- path.sh ---</br>
-						# Defining Kaldi root directory</br>
-						export KALDI_ROOT=</br>
-						# Setting paths to useful tools</br>
-						export PATH=</br>
-						# Enable SRILM</br>
-						. $KALDI_ROOT/tools/env.sh</br>
-						# Variable needed for proper data sorting</br>
-						export LC_ALL=C</p>
 
-						<p>--- run_misp.sh ---</br>
-						# Defining corpus directory</br>
-						misp2022_corpus=</br>
-						# Defining path to beamforIt executable file</br>
-						bearmformit_path = </br>
-						# Defining path to python interpreter</br>
-						python_path = </br>
-						# the directory to host coordinate information used to crop ROI </br>
-						data_roi =</br>
-						# dictionary directory </br>
-						dict_dir= </code></p>  
-						<p></p>
-						<ul>
-						<li><strong>Running Training</strong></li>
-						</ul>
-						<p><code>./run.sh </br>
-						# options:</br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        --stage  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    -1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change the number to start from different training stages</br></code></p>
-
-
-
-					<h1 style="font-size: 150%;">Requirments</h1>
-					<ul>
-					<li>
-					<p><strong>Kaldi</strong></p>
-					</li>
-					<li>
-					<p><strong>Python Packages:</strong></br>
-					numpy</br>
-					tqdm</br>
-					<a href="https://github.com/fxsjy/jieba">jieba</a></p>
-					</li>
-					<li>
-					<p><strong>Other Tools:</strong></br>
-					<a href="https://github.com/fgnt/nara_wpe">nara_wpe</a></br>
-					<a href="https://github.com/xanguera/BeamformIt">Beamformit</a></br>
-					SRILM</p>
-					</li>
-					</ul>
-				
-					<h1 style="font-size: 150%;">Citation</h1>
-					<p>If you find this code useful in your research, please consider to cite the following papers:</br>
-						<font size="4">
-							@inproceedings{chen2022first,</br>
-							title={The first multimodal information based speech processing (misp) challenge: Data, tasks, baselines and results},</br>
-							author={Chen, Hang and Zhou, Hengshun and Du, Jun and Lee, Chin-Hui and Chen, Jingdong and Watanabe, Shinji and Siniscalchi, Sabato Marco and Scharenborg, Odette and Liu, Di-Yuan and Yin, Bao-Cai and others},</br>
-							booktitle={ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},</br>
-							pages={9266--9270},</br>
-							year={2022},</br>
-							organization={IEEE}</br>
-							}</br>
-							@inproceedings{2022misptask2,</br>
-							author={Chen, Hang and Du, Jun and Dai, Yusheng and Lee, Chin-Hui and Siniscalchi, Sabato Marco and Watanabe, Shinji and Scharenborg, Odette and Chen, Jingdong and Yin, Bao-Cai and Pan, jia},</br>
-							booktitle={Proc. INTERSPEECH 2022},</br>
-							title={Audio-Visual Speech Recognition in MISP2021 Challenge: Dataset Release and Deep Analysis},</br>
-							year={2022}}
-						</font>
-					</p>
 			</div>
 		</section>
 

@@ -37,29 +37,17 @@ ul.c {list-style-type: square;}
 							<ul>
 								<li><a href="index.html">Home</a></li>
 								<li><a href="overview.html">Overview</a></li>
-								<li><a href="data.html">Data</a></li>
+								<li><a href="data.html">Dataset</a></li>
+								<li><a href="evaluation.html">Evaluation</a></li>
 								<li class="current">
-									<a href="#">Task</a>
+									<a href="#">Baseline</a>
 									<ul>
-										<li><a href="task1_instructions.html">Instructions</a></li>										
-										<li><a href="task1_software.html">Baseline</a></li>
-						                <li><a href="task1_submission.html">Submission</a></li>
+										<li><a href="task1_software.html">Task1</a></li>
+										<li><a href="task2_software.html">Task2</a></li>
 									</ul>
 								</li>
-								
-								<!-- <li>
-									<a href="#">Task3</a>
-									<ul>
-										<li><a href="task3_instructions.html">Instructions</a></li>
-										<li><a href="task3_data.html">Data</a></li>
-										<li><a href="task3_software.html">Software</a></li>
-										<li><a href="task3_submission.html">Submission</a></li>
-									</ul>
-								</li> -->
-								<li><a href="download.html">Registration</a></li>
-								<li><a href="extral_data.html">Extra Data</a></li>
-								<!-- <li><a href="results.html">Results</a></li> -->
-								<!-- <li><a href="contact.html">Contact</a></li> -->
+								<li><a href="registration.html">Registration</a></li>
+								<li><a href="submission.html">Submission</a></li>
 							</ul>
 						</nav>
 
@@ -70,13 +58,20 @@ ul.c {list-style-type: square;}
 			<section class="wrapper style1">
 				<div class="container">
 					<header>
-						<h1 style="font-size: 150%;">Baseline</h1>
+						<h1 style="font-size: 150%;">Wake Word Lipreading Baseline</h1>
 					</header>
-					<p>For the code and guide of the baseline system, please refer to <a href="https://github.com/mispchallenge/MISP-2023-Challenge-Baseline">Github link</a></p>
-					<p>For more description of the baseline system, please refer to the following two papers:</p>
+					<p>For the code and guide of the baseline system, please refer to video only system at <a href="https://github.com/mispchallenge/MISP2021-AVWWS">Github link</a></p>
+					<p>For more description of the baseline system, please refer to the following paper:</p>
+					<a href="https://www.isca-archive.org/interspeech_2022/zhou22g_interspeech.html">Audio-Visual Wake Word Spotting in MISP2021 Challenge: Dataset Release and Deep Analysis</a>
+
+
 					<ul>
-						<li><a href="https://arxiv.org/abs/2309.08348">The Multimodal Information Based Speech Processing (MISP) 2023 Challenge: Audio-Visual Target Speaker Extraction</a></li>
-						<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608021002355">Correlating subword articulation with lip shapes for embedding aware audio-visual speech enhancement. </a></li>
+						<li><strong>Introduction</strong></li>
+						<p>This is the baseline system for the Chat-scenario Chinese Lipreading (ChatCLR) Challenge task 1. This task concerns the lipreading of predefined wake word(s) with only visual modality. ‘1’ indicates that the sample contains a wake word, and ‘0’ indicates the opposite.</p>
+						<li><strong>System Description</strong></li>
+						<p>The video system implements a neural network (NN) based approach and a network consisting of CNN layers, LSTM layer, and fully connected layers are trained to assign labels to the samples.</p>
+						<li><strong>Video Wake Word Spotting</strong></li>
+						<p>To get visual embeddings, we first crop lip region of interest (ROI) from video streams, then use the lipreading TCN to extract 512-dimensional features. Several data augmentation methods (optional) are also adopted for video data.</p>
 					</ul>
 				</div>
 			</section>
@@ -84,74 +79,100 @@ ul.c {list-style-type: square;}
 			<section class="wrapper style1">
 				<div class="container">
 					<header>
-						<h1 style="font-size: 150%;">Data Preparation</h1>
+						<h1 style="font-size: 150%;">Results</h1>
 					</header>
-					<p>As shown in the Data section, we performed data cleaning on the raw audio data and simulated 6-channel far-field audio using the cleaned near-field speech.</p>
-				</div>
-			</section>
-
-			<section class="wrapper style1">
-				<div class="container">
-					<header>
-						<h1 style="font-size: 150%;">System Architecture</h1>
-					</header>
-					<center>
-						<figure style="padding:0px;border:0px; margin:10px">
-						<img src="images/basline_sys.png" alt="Real Shot" style="width:40%;padding:0px;border:0" />
-						<figcaption>Fig.1. Diagram of the baseline system.</figcaption>
-						</figure>
-					</center>
-					<p>As shown in Figure 1, first, we used the oracle diarization results to conduct guided source separation (GSS) on 6-channels mixture audio to initially mitigate the impact of the overlapping speech. Then, we use our recent work - the multimodal embedding aware speech enhancement (MEASE) model to futher extract the speech of the target speaker. The MEASE model comprises a multimodal embedding extractor (in red dashed box) and an embedding-aware enhancement network. For more details, please refer to the two papers above.</p>
-				</div>
-			</section>
-
-			<section class="wrapper style1">
-				<div class="container">
-					<header>
-						<h1 style="font-size: 150%;">Training Process</h1>
-					</header>
-					<center>
-						<figure style="padding:0px;border:0px; margin:10px">
-						<img src="images/two_stage.png" alt="Real Shot" style="width:50%;padding:0px;border:0" />
-						<figcaption>Fig.2. The two-stage training process of the baseline system.</figcaption>
-						</figure>
-					</center>
-					<p>As shown in Figure 2, the training process of the baseline system encompasses two stages. Firstly, we trained the MEASE model using the simulated data with MSE as the loss function. In the second stage, we fine-tuned the pre-trained MEASE model using the recognition back-end. Furthermore, to mitigate the issue of mismatch between simulated data and real-world scenarios, we utilized the real far-field data from the training set in the second stage. Because we require that the parameters of the back-end system cannot be changed, we freeze the recognition model and only use the loss returned by it.</p>
-				</div>
-			</section>
-
-			<section class="wrapper style1">
-				<div class="container">
-					<header>
-						<h1 style="font-size: 150%;">Back-end ASR Testing</h1>
-					</header>
-					<center>
-						<figure style="padding:0px;border:0px; margin:10px">
-						<img src="images/audio_part.png" alt="Real Shot" style="width:25%;padding:0px;border:0" />
-						<figcaption>Fig. 3. Back-end ASR model.</figcaption>
-						</figure>
-					</center>
-					<p>The backend ASR model is based on this following paper:</p>
-					<p><a href="https://ieeexplore.ieee.org/abstract/document/10219701">Improving Audio-Visual Speech Recognition by Lip-Subword Correlation Based Visual Pre-training and Cross-Modal Fusion Encoder.</a></p>
-					<p>To better investigate the role of the AVTSE system, focusing on the enhancements brought by audio improvements, we use the audio-only part of that paper, as shown in figure 3. We have given the code and the pre-trained parameters for the ASR model, which you can find in the github link above. You can test the extracted speech directly. In addition, you can also use different methods to use the back-end system to finetune the front-end AVTSE system just like the baseline system, but you must ensure that the back-end system parameters do not change.</p>
-				</div>
-			</section>
-
-			<section class="wrapper style1">
-				<div class="container">
-					<header>
-						<h1 style="font-size: 150%;">Baseline Results</h1>
-					</header>
-					<center>
-						<figure style="padding:0px;border:0px; margin:10px">
-						<figcaption>Tab. 1. Detailed CER (%) and DNSMOS results of different front-end systems on the development set.</figcaption>
-						<img src="images/base_results.png" alt="Real Shot" style="width:70%;padding:0px;border:0" />
-						</figure>
-					</center>
-					<p>Table 1 shows the results of different front-end systems in the speech recognition evaluation metric and DNSMOS P.835. It is worth noting that we only use the recognition results as the evaluation indicators. DNSMOS is only used as a reference to study changes in speech quality. The final baseline result is the CER of 26.3. The baseline results of the evaluation set will be given after the evaluation set is released.</p>
+					<p>We utilize the Score as the performance criterion of the wake word lipreading task, which is calculated as the sum of the false reject rate (FRR) and false alarm rate (FAR). The system performances on the development set are as follows:</p>
+					<style>
+						table {
+						  border-collapse: collapse;
+						  width: 100%;
+						}
+					  
+						th, td {
+						  border: 1px solid #ddd;
+						  padding: 8px;
+						  text-align: center;
+						}
+					  
+						th {
+						  background-color: #f2f2f2;
+						}
+					  </style>
+					  
+					  <table>
+						<tr>
+						  <th>DA</th>
+						  <th>FAR</th>
+						  <th>FRR</th>
+						  <th>Score</th>
+						</tr>
+						<tr>
+						  <td>No</td>
+						  <td>0.147</td>
+						  <td>0.494</td>
+						  <td>0.641</td>
+						</tr>
+						<tr>
+						  <td>Yes</td>
+						  <td>0.384</td>
+						  <td>0.087</td>
+						  <td>0.471</td>
+						</tr>
+					  </table>
 					
+					  <p>“DA” indicates data augmentation.</p>
+					  
+
 				</div>
 			</section>
+
+			<section class="wrapper style1">
+				<div class="container">
+					<header>
+						<h1 style="font-size: 150%;">Setting Paths</h1>
+					</header>
+					<ul>
+						<li><strong>kws_net_only_video</strong></li>
+					</ul>
+					<div class="ml1">
+						<p><code>--- kws_net_only_video/run.sh ---</br>
+						# Defining corpus directory</br>
+						data_root=</br>
+						# Defining path to python interpreter</br>
+						python_path=</code></p>
+					</div>
+
+
+					<header>
+						<h1 style="font-size: 150%;">Running the baseline system</h1>
+					</header>
+					<ul>
+						<li><strong>Run Video Training</strong></li>
+					</ul>
+					<div class="ml1">
+						<p><code>cd ../kws_net_only_video</br>
+							sh run.sh</code></p>
+					</div>
+					
+					<header>
+						<h1 style="font-size: 150%;">Requirments</h1>
+					</header>
+					<ul>
+						<li><strong>pytorch</strong></li>
+						<li><strong>python packages</strong></li>
+						<p style="text-indent: 20px;">numpy</p>
+						<p style="text-indent: 20px;">OpenCV</p>
+						<p style="text-indent: 20px;">tqdm</p>
+						<li><strong>other tools</strong></li>
+						<p style="text-indent: 20px;">sox</p>
+					</ul>
+
+				</div>
+
+
+			</section>
+
+			
 			
 			
 			<!-- Footer -->
