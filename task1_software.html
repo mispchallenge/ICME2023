@@ -73,64 +73,54 @@ ul.c {list-style-type: square;}
 						<li><strong>Video Wake Word Spotting</strong></li>
 						<p>To get visual embeddings, we first crop lip region of interest (ROI) from video streams, then use the lipreading TCN to extract 512-dimensional features. Several data augmentation methods (optional) are also adopted for video data.</p>
 					</ul>
-				</div>
-			</section>
 			
-			<section class="wrapper style1">
-				<div class="container">
-					<header>
-						<h1 style="font-size: 150%;">Results</h1>
-					</header>
+
+					<h1 style="font-size: 150%;">Results</h1>
 					<p>We utilize the Score as the performance criterion of the wake word lipreading task, which is calculated as the sum of the false reject rate (FRR) and false alarm rate (FAR). The system performances on the development set are as follows:</p>
 					<style>
+						#table-container {
+						  text-align: center; /* 居中对齐 */
+						}
 						table {
 						  border-collapse: collapse;
-						  width: 100%;
+						  width: 50%;
+						  margin: 0 auto; /* 水平居中 */
 						}
-					  
 						th, td {
-						  border: 1px solid #ddd;
-						  padding: 8px;
-						  text-align: center;
-						}
-					  
-						th {
-						  background-color: #f2f2f2;
+						  border: 1px solid #000;
+						  padding: 5px;
 						}
 					  </style>
 					  
-					  <table>
-						<tr>
-						  <th>DA</th>
-						  <th>FAR</th>
-						  <th>FRR</th>
-						  <th>Score</th>
-						</tr>
-						<tr>
-						  <td>No</td>
-						  <td>0.147</td>
-						  <td>0.494</td>
-						  <td>0.641</td>
-						</tr>
-						<tr>
-						  <td>Yes</td>
-						  <td>0.384</td>
-						  <td>0.087</td>
-						  <td>0.471</td>
-						</tr>
-					  </table>
+					  <div id="table-container">
+						<table>
+						  <tr>
+							<th>DA</th>
+							<th>FAR</th>
+							<th>FRR</th>
+							<th>Score</th>
+						  </tr>
+						  <tr>
+							<td>No</td>
+							<td>0.147</td>
+							<td>0.494</td>
+							<td>0.641</td>
+						  </tr>
+						  <tr>
+							<td>Yes</td>
+							<td>0.384</td>
+							<td>0.087</td>
+							<td>0.471</td>
+						  </tr>
+						</table>
+					  </div>
+					  
 					
 					  <p>“DA” indicates data augmentation.</p>
 					  
 
-				</div>
-			</section>
 
-			<section class="wrapper style1">
-				<div class="container">
-					<header>
-						<h1 style="font-size: 150%;">Setting Paths</h1>
-					</header>
+					<h1 style="font-size: 150%;">Setting Paths</h1>
 					<ul>
 						<li><strong>kws_net_only_video</strong></li>
 					</ul>
@@ -158,13 +148,18 @@ ul.c {list-style-type: square;}
 						<h1 style="font-size: 150%;">Requirments</h1>
 					</header>
 					<ul>
+						<style>
+							.reduce-spacing {
+							  margin-bottom: 0px; /* 减小特定<p>元素之间的距离 */
+							}
+						</style>
 						<li><strong>pytorch</strong></li>
 						<li><strong>python packages</strong></li>
-						<p style="text-indent: 20px;">numpy</p>
-						<p style="text-indent: 20px;">OpenCV</p>
-						<p style="text-indent: 20px;">tqdm</p>
+						<p class="reduce-spacing" style="text-indent: 20px">numpy</p>
+						<p class="reduce-spacing" style="text-indent: 20px">OpenCV</p>
+						<p class="reduce-spacing" style="text-indent: 20px">tqdm</p>
 						<li><strong>other tools</strong></li>
-						<p style="text-indent: 20px;">sox</p>
+						<p style="text-indent: 20px">sox</p>
 					</ul>
 
 				</div>
